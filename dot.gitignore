@@ -1,0 +1,11 @@
+# Silly OS X trash files.
+.DS_Store
+
+# vim backup files.
+.*.swp
+
+# other editor backup files.
+*~
+
+# Compiled python modules.
+*.pyc

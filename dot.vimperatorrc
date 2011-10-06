@@ -1,0 +1,7 @@
+" Don't beep, stupid POS
+set popups=3
+
+echo ".vimperatorrc sourced"
+
+" vim: set ft=vimperator foldmethod=marker:
+
