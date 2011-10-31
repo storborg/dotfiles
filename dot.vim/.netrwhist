@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/scott/local/scrappy/scrappy/model'
-let g:netrw_dirhist_2='/Users/scott/local/scrappy/scrappy/templates'
-let g:netrw_dirhist_3='/Users/scott/local/scrappy/scrappy/templates/admin'

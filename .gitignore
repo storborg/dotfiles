@@ -1,0 +1,4 @@
+# Note that this is the .gitignore for THE DOTFILES REPO. Not the global
+# .gitignore, that is in dot.gitignore.
+
+dot.vim/.netrwhist
