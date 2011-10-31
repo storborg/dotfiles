@@ -63,6 +63,8 @@ if has("gui_running")
   set guifont=Bitstream\ Vera\ Sans\ Mono:h10
 endif
 
+call pathogen#infect()
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
