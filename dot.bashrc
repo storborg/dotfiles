@@ -42,14 +42,6 @@ export HISTCONTROL=ignoredups
 # when using lots of different terminals.
 shopt -s histappend
 
-############################# Scrappy Completion #############################
-
-if [ -e ~/local/scrappy/bin/completion.sh ];
-then
-    source ~/local/scrappy/bin/completion.sh
-fi
-
-
 ############################# EC2 Configuration ##############################
 
 # If we have an Amazon EC2 configuration directory, load it up.
