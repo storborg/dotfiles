@@ -154,7 +154,8 @@ if has("gui_running")
     " If no recipients are set, encrypt to me.
     let g:GPGDefaultRecipients = ["storborg@mit.edu"]
     " Use vibrantink in GUI mode.
-    colorscheme vibrantink 
+    "colorscheme vibrantink 
+    colorscheme molokai
 endif
 
 
