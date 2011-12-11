@@ -156,6 +156,8 @@ alias pui='paster update-images'
 alias mcflush='echo flush_all | nc 127.0.0.1 11211'
 alias mcstatus='echo stats | nc 127.0.0.1 11211'
 
+alias webserver='python -m SimpleHTTPServer'
+
 alias nt=nosetests
 
 alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
