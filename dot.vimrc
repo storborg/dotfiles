@@ -31,6 +31,9 @@ set expandtab
 set softtabstop=4
 set autoindent
 
+" do ---- for tabs
+set list listchars=tab:\ \ ,trail:·
+
 " Use ctrl + movement keys to move around windows
 map <C-H> <C-W>h<C-W>_
 map <C-J> <C-W>j<C-W>_
