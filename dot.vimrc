@@ -31,9 +31,6 @@ set expandtab
 set softtabstop=4
 set autoindent
 
-" do ---- for tabs
-set list listchars=tab:\ \ ,trail:·
-
 " Use ctrl + movement keys to move around windows
 map <C-H> <C-W>h<C-W>_
 map <C-J> <C-W>j<C-W>_
@@ -60,6 +57,9 @@ let g:html_indent_inctags = "li"
 
 " If the gui is launching, set the window size to a reasonable default.
 if has("gui_running")
+  " do ---- for tabs
+  set list listchars=tab:\ \ ,trail:·
+
   set lines=50
   set columns=85
   set go-=T
