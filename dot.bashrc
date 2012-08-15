@@ -54,7 +54,7 @@ fi
 
 ############################## Initialize Paths ##############################
 
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 # Base PATH.
 export PATH=/brew/bin:/brew/sbin:/usr/bin:/usr/sbin:/bin:/sbin
@@ -161,6 +161,8 @@ alias webserver='python -m SimpleHTTPServer'
 alias nt=nosetests
 
 alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
+
+alias notify='/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier'
 
 ############################## Prompt Settings ###############################
 
