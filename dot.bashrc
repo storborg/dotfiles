@@ -60,7 +60,7 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 export PATH=/brew/bin:/brew/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
 # If any of these dirs add them in this order.
-for d in ~/devel/bin ~/bin ~/local/bin;
+for d in ~/devel/bin ~/bin ~/local/bin /usr/local/android/tools /usr/local/android/platform-tools;
 do
     [ -e $d ] && export PATH=$PATH:$d
 done
