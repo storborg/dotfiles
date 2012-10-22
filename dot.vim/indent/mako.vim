@@ -239,6 +239,7 @@ call <SID>HtmlIndentPush('u')
 call <SID>HtmlIndentPush('ul')
 call <SID>HtmlIndentPush('var')
 call <SID>HtmlIndentPush('video')
+call <SID>HtmlIndentPush('audio')
 
 " For some reason the default HTML indentation script doesn't consider these
 " elements to be worthy of indentation.
@@ -246,6 +247,29 @@ call <SID>HtmlIndentPush('p')
 call <SID>HtmlIndentPush('dt')
 call <SID>HtmlIndentPush('dd')
 
+" New HTML5 structure tags.
+call <SID>HtmlIndentPush('section')
+call <SID>HtmlIndentPush('header')
+call <SID>HtmlIndentPush('footer')
+call <SID>HtmlIndentPush('nav')
+call <SID>HtmlIndentPush('article')
+
+" New HTML5 block semantic element tags.
+call <SID>HtmlIndentPush('aside')
+call <SID>HtmlIndentPush('figure')
+call <SID>HtmlIndentPush('dialog')
+
+" New HTML5 inline semantic element tags.
+call <SID>HtmlIndentPush('mark')
+call <SID>HtmlIndentPush('time')
+call <SID>HtmlIndentPush('meter')
+call <SID>HtmlIndentPush('progress')
+
+" New HTML5 interactivity tags.
+call <SID>HtmlIndentPush('details')
+call <SID>HtmlIndentPush('datagrid')
+call <SID>HtmlIndentPush('menu')
+call <SID>HtmlIndentPush('command')
 
 " [-- <ELEMENT ? O O ...> --]
 if !exists('g:html_indent_strict')
