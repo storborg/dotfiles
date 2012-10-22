@@ -4,6 +4,8 @@
 # vim backup files.
 .*.swp
 
+.swp
+
 # other editor backup files.
 *~
 
