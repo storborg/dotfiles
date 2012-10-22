@@ -2,7 +2,11 @@
 " Language:	    Python
 " Maintainer:	    Eric Mc Sween <em@tomcom.de>
 " Original Author:  David Bustos <bustos@caltech.edu> 
-" Last Change:      2004 Jun 07
+" Last Change:      2012 Aug 15
+"
+" Updated 2012 Aug 15 by Scott Torborg <storborg@gmail.com>
+" - Adds support for more esoteric PEP8 indentation conditions, particularly
+"   E125 and E127.
 
 " Only load this indent file when no other was loaded.
 if exists("b:did_indent")
@@ -105,11 +109,22 @@ function! GetPythonIndent(lnum)
     if a:lnum == 1
         return 0
     endif
-    
+
+    " Examine this line
+    let thisline = getline(a:lnum)
+    let thisindent = indent(a:lnum)
+
     " If we can find an open parenthesis/bracket/brace, line up with it.
     call cursor(a:lnum, 1)
     let parlnum = s:SearchParensPair()
     if parlnum > 0
+        " If this line ends in a :, we want it indented past the next logical
+        " statement as per E125, so go two tabs past the beginning of the
+        " statement.
+        if thisline =~ ':\s*$'
+          return indent(parlnum) + &sw * 2
+        endif
+
         let parcol = col('.')
         let closing_paren = match(getline(a:lnum), '^\s*[])}]') != -1
         if match(getline(parlnum), '[([{]\s*$', parcol - 1) != -1
@@ -126,10 +141,6 @@ function! GetPythonIndent(lnum)
             endif
         endif
     endif
-    
-    " Examine this line
-    let thisline = getline(a:lnum)
-    let thisindent = indent(a:lnum)
 
     " If the line starts with 'elif' or 'else', line up with 'if' or 'elif'
     if thisline =~ '^\s*\(elif\|else\)\>'
@@ -140,7 +151,7 @@ function! GetPythonIndent(lnum)
             return -1
         endif
     endif
-        
+
     " If the line starts with 'except' or 'finally', line up with 'try'
     " or 'except'
     if thisline =~ '^\s*\(except\|finally\)\>'
@@ -151,29 +162,32 @@ function! GetPythonIndent(lnum)
             return -1
         endif
     endif
-    
+
     " Examine previous line
     let plnum = a:lnum - 1
     let pline = getline(plnum)
     let sslnum = s:StatementStart(plnum)
-    
+
     " If the previous line is blank, keep the same indentation
     if pline =~ '^\s*$'
         return -1
     endif
-    
-    " If this line is explicitly joined, try to find an indentation that looks
-    " good. 
+
+    " If this line is otherwise explicitly joined with a backslash...
     if pline =~ '\\$'
-        let compound_statement = '^\s*\(if\|while\|for\s.*\sin\|except\)\s*'
-        let maybe_indent = matchend(getline(sslnum), compound_statement)
-        if maybe_indent != -1
-            return maybe_indent
-        else
+        "let compound_statement = '^\s*\(if\|while\|for\s.*\sin\|except\)\s*'
+        "let maybe_indent = matchend(getline(sslnum), compound_statement)
+
+        if thisline =~ ':\s*$'
+            " If the statement ends in an :, we don't want it to line up with th
+            " next logical line, so indent it by two, as per PEP8 E125.
             return indent(sslnum) + &sw * 2
+        else
+            " Otherwise indent by one as per PEP8 E127.
+            return indent(sslnum) + &sw
         endif
     endif
-    
+
     " If the previous line ended with a colon, indent relative to
     " statement start.
     if pline =~ ':\s*$'
