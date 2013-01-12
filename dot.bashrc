@@ -90,14 +90,14 @@ then
     export WORKON_HOME=~/.virtualenvs
     source /usr/local/bin/virtualenvwrapper.sh
 
-    # Activate the pylons27 virtualenv, if it exists.
-    if [ -e $WORKON_HOME/pylons27 ];
+    # Activate the scrappy27 virtualenv, if it exists.
+    if [ -e $WORKON_HOME/scrappy27 ];
     then
-        workon pylons27
+        workon scrappy27
     fi
-elif [ -e /var/sw/pylons27 ];
+elif [ -e /var/sw/scrappy27 ];
 then
-    source /var/sw/pylons27/bin/activate
+    source /var/sw/scrappy27/bin/activate
 fi
 
 # Run this file each time python starts up.
