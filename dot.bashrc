@@ -79,6 +79,11 @@ case "$platform" in
         ;;
 esac
 
+if [ -e /usr/local/share/npm/bin ];
+then
+    export PATH=/usr/local/share/npm/bin:$PATH
+fi
+
 if [ -e /usr/local/mysql ];
 then
     export PATH=/usr/local/mysql/bin:$PATH
