@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if [ $# -ne 2 ]
+then
+    echo "Usage: `basename $0` <host> <database>"
+    exit 65
+fi
+
 datestr=`date "+%m%d%Y-%H%M"`
 fname="$2-$datestr.sql"
 
