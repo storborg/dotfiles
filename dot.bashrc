@@ -103,6 +103,9 @@ then
 elif [ -e /var/sw/scrappy27 ];
 then
     source /var/sw/scrappy27/bin/activate
+elif [ -e /var/sw/pylons27 ];
+then
+    source /var/sw/pylons27/bin/activate
 fi
 
 # Run this file each time python starts up.
