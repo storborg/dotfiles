@@ -172,6 +172,8 @@ alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
 
 alias notify='/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier'
 
+alias ocean='play -q -c 2 -n synth brownnoise band -n 1600 1500 tremolo .1 30'
+
 ############################## Prompt Settings ###############################
 
 # Update the terminal window title with user@hostname:dir even when
