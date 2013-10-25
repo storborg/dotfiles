@@ -23,6 +23,9 @@ set incsearch
 " show line numbers
 set number
 
+" don't blink the cursor
+set guicursor+=i:blinkwait0
+
 " set some sensible tab settings (death to \t!)
 set tabstop=4
 set shiftwidth=4
