@@ -60,7 +60,7 @@ fi
 export PATH=/brew/bin:/brew/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
 # If any of these dirs add them in this order.
-for d in ~/devel/bin ~/bin ~/local/bin /usr/local/android/tools /usr/local/android/platform-tools;
+for d in ~/devel/bin ~/bin ~/local/bin /usr/local/android/tools /usr/local/android/platform-tools /Applications/Hugin/Hugin.app/Contents/MacOS;
 do
     [ -e $d ] && export PATH=$PATH:$d
 done
