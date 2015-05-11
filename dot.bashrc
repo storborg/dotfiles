@@ -171,6 +171,8 @@ fi
 alias cvim=mvim
 alias gvim=mvim
 
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
+
 alias gist='git status'
 alias f='finger'
 alias fuckoff='logout'
