@@ -99,20 +99,33 @@ then
     export PATH=/usr/local/mysql/bin:$PATH
 fi
 
+if [ -e /usr/local/gcc-arm-none-eabi ];
+then
+    export PATH=/usr/local/gcc-arm-none-eabi/bin:$PATH
+fi
+
+if [ -e /Applications/Arduino.app/Contents/Java/hardware/tools/avr/bin ];
+then
+    export PATH=/Applications/Arduino.app/Contents/Java/hardware/tools/avr/bin:$PATH
+fi
+
+#export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/Users/scott/local/gnuradio/build/lib/pkgconfig
+#export PATH=$PATH:/Users/scott/local/gnuradio/build/bin
+
 # Set up virtualenvwrapper.
 if [ -e /usr/local/bin/virtualenvwrapper.sh ];
 then
     export WORKON_HOME=~/.virtualenvs
     source /usr/local/bin/virtualenvwrapper.sh
 
-    # Activate the scrappy27 virtualenv, if it exists.
-    if [ -e $WORKON_HOME/scrappy27 ];
+    # Activate the py34 virtualenv, if it exists.
+    if [ -e $WORKON_HOME/py34 ];
     then
-        workon scrappy27
+        workon py34
     fi
-elif [ -e /var/sw/scrappy27 ];
+elif [ -e /var/sw/py34 ];
 then
-    source /var/sw/scrappy27/bin/activate
+    source /var/sw/py34/bin/activate
 elif [ -e /var/sw/pylons27 ];
 then
     source /var/sw/pylons27/bin/activate
