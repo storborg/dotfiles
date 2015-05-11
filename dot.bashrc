@@ -165,10 +165,11 @@ fi
 ############################### Common Aliases ###############################
 
 # Alias for cocoa vim.
-alias cvim='open -a Vim'
+#alias cvim='open -a Vim'
 
-# For now, set gvim to be cocoa vim.
-alias gvim=cvim
+# Override everything to macvim
+alias cvim=mvim
+alias gvim=mvim
 
 alias gist='git status'
 alias f='finger'
