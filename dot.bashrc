@@ -109,48 +109,14 @@ then
     source /usr/local/bin/virtualenvwrapper.sh
 
     # Activate the py34 virtualenv, if it exists.
-    if [ -e $WORKON_HOME/py34 ];
+    if [ -e $WORKON_HOME/default35 ];
     then
-        workon py34
+        workon default35
     fi
-elif [ -e /var/sw/py34 ];
-then
-    source /var/sw/py34/bin/activate
-elif [ -e /var/sw/pylons27 ];
-then
-    source /var/sw/pylons27/bin/activate
 fi
 
 # Run this file each time python starts up.
 export PYTHONSTARTUP=~/.pythonrc.py
-
-####################### Cross-Platform Apache Aliases ########################
-
-# These aliases help avoid confusion: some platforms have sudo, some don't,
-# some use apachectl, some use apache2ctl, etc.
-
-if [[ $(which apachectl) ]]
-then
-    apache_prefix="apachectl"
-else
-    if [[ $(which apache2ctl) ]]
-    then
-        apache_prefix="apache2ctl"
-    fi
-fi
-
-if [ $apache_prefix ]
-then
-    if [ $(id -u) -ne 0 ]
-    then
-        apache_prefix="sudo $apache_prefix"
-    fi
-    
-    alias sar="$apache_prefix restart"
-    alias sag="$apache_prefix graceful"
-    alias sac="$apache_prefix configtest"
-    alias sas="$apache_prefix stop"
-fi
 
 ############################### Common Aliases ###############################
 
@@ -168,25 +134,15 @@ alias f='finger'
 alias fuckoff='logout'
 alias logthefuckout='logout'
 alias term='xterm -fg white -bg black'
-alias fixit='git checkout HEAD~1 && sag'
 alias ms='mysql -uroot'
 alias msdump='mysqldump -uroot'
-
-alias psr='paster serve --reload'
-alias psa='paster setup-app'
-alias ppo='paster populate'
-alias pui='paster update-images'
 
 alias mcflush='echo flush_all | nc 127.0.0.1 11211'
 alias mcstatus='echo stats | nc 127.0.0.1 11211'
 
-alias webserver='python -m SimpleHTTPServer'
-
 alias nt=nosetests
 
 alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
-
-alias notify='/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier'
 
 alias ocean='play -q -c 2 -n synth brownnoise band -n 1600 1500 tremolo .1 30'
 
@@ -213,7 +169,7 @@ case "$TERM" in
     		    ps1_hostname="\e[37;1m\][\[\e[31;1m\]\h\[\e[37;1m\]"
                 ;;
         esac
-        
+
 		if [ $(id -u) -eq 0 ];
 		then
 		    # You are root, set red colour prompt with #.
@@ -222,7 +178,7 @@ case "$TERM" in
 		    # You are a normal user, set blue color prompt with $.
 		    ps1_username=" \[\e[36;1m\]\u$\[\e[0m\] "
 		fi
-	    
+
 	    # Combine prompt string.
 	    export PS1="\[$ps1_hostname:\[\e[32;1m\]\w\[\e[37;1m\]]$ps1_username"
 
