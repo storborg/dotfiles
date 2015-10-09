@@ -70,32 +70,24 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 case "$platform" in
     Darwin)
-        export PATH=$PATH:/usr/X11/bin:$EC2_HOME/bin:/usr/local/mysql/bin
+        export PATH=$PATH:/usr/X11/bin
         export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
         ;;
     Linux)
         ;;
 esac
 
-if [ -e /usr/local/share/npm/bin ];
-then
-    export PATH=/usr/local/share/npm/bin:$PATH
-fi
+# For ARM toolchain...
+#if [ -e /usr/local/gcc-arm-none-eabi ];
+#then
+#    export PATH=/usr/local/gcc-arm-none-eabi/bin:$PATH
+#fi
 
-if [ -e /usr/local/mysql ];
-then
-    export PATH=/usr/local/mysql/bin:$PATH
-fi
-
-if [ -e /usr/local/gcc-arm-none-eabi ];
-then
-    export PATH=/usr/local/gcc-arm-none-eabi/bin:$PATH
-fi
-
-if [ -e /Applications/Arduino.app/Contents/Java/hardware/tools/avr/bin ];
-then
-    export PATH=/Applications/Arduino.app/Contents/Java/hardware/tools/avr/bin:$PATH
-fi
+# For Arduino toolchain...
+#if [ -e /Applications/Arduino.app/Contents/Java/hardware/tools/avr/bin ];
+#then
+#    export PATH=/Applications/Arduino.app/Contents/Java/hardware/tools/avr/bin:$PATH
+#fi
 
 #export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/Users/scott/local/gnuradio/build/lib/pkgconfig
 #export PATH=$PATH:/Users/scott/local/gnuradio/build/bin
