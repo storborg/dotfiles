@@ -146,61 +146,85 @@ export PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"
 complete -cf sudo
 
 # Check for terminal color support.
-case "$TERM" in
-	xterm*|rxvt*)
-	    # This terminal supports colors.
-        case "$platform" in
-            Darwin)
-    		    # You are on an OS X machine, so set green hostname.
-    		    ps1_hostname="\e[37;1m\][\[\e[32;1m\]\h\[\e[37;1m\]"
-                ;;
-            Linux)
-    		    # You are on a Linux machine, set red hostname.
-    		    ps1_hostname="\e[37;1m\][\[\e[31;1m\]\h\[\e[37;1m\]"
-                ;;
-        esac
+function update_prompt () {
+    ps1_extra=$1
+    case "$TERM" in
+        xterm*|rxvt*)
+            # This terminal supports colors.
+            case "$platform" in
+                Darwin)
+                    # You are on an OS X machine, so set green hostname.
+                    ps1_hostname="\e[37;1m\][\[\e[32;1m\]\h\[\e[37;1m\]"
+                    ;;
+                Linux)
+                    # You are on a Linux machine, set red hostname.
+                    ps1_hostname="\e[37;1m\][\[\e[31;1m\]\h\[\e[37;1m\]"
+                    ;;
+            esac
 
-		if [ $(id -u) -eq 0 ];
-		then
-		    # You are root, set red colour prompt with #.
-		    ps1_username=" \[\e[31;1m\]\u#\[\e[0m\] "
-		else
-		    # You are a normal user, set blue color prompt with $.
-		    ps1_username=" \[\e[36;1m\]\u$\[\e[0m\] "
-		fi
+            if [ $(id -u) -eq 0 ];
+            then
+                # You are root, set red colour prompt with #.
+                ps1_username="\[\e[31;1m\]\u#\[\e[0m\] "
+            else
+                # You are a normal user, set blue color prompt with $.
+                ps1_username="\[\e[36;1m\]\u$\[\e[0m\] "
+            fi
 
-	    # Combine prompt string.
-	    export PS1="\[$ps1_hostname:\[\e[32;1m\]\w\[\e[37;1m\]]$ps1_username"
+            # Combine prompt string.
+            export PS1="\[$ps1_hostname:\[\e[32;1m\]\w\[\e[37;1m\]] $ps1_extra $ps1_username"
 
-        # Set ls colorization, use yellow for directories.
-        export CLICOLOR=1
-        export LSCOLORS=dxfxcxdxbxegedabagacad
-		;;
-	*)
-		if [ $(id -u) -eq 0 ];
-		then
-		    # You are root, set rootish.
-			export PS1="[\h:\w] \u# "
-		else
-			export PS1="[\h:\w] \u$ "
-		fi
-		;;
-esac
+            # Set ls colorization, use yellow for directories.
+            export CLICOLOR=1
+            export LSCOLORS=dxfxcxdxbxegedabagacad
+            ;;
+        *)
+            if [ $(id -u) -eq 0 ];
+            then
+                # You are root, set rootish.
+                export PS1="[\h:\w] \u# "
+            else
+                export PS1="[\h:\w] \u$ "
+            fi
+            ;;
+    esac
+}
+
+update_prompt "-"
 
 ############################## Package Managers ###############################
 
+function deactivate_any () {
+    type deactivate >/dev/null 2>&1
+    if [ $? -eq 0 ]
+    then
+        deactivate
+    fi
+}
+
 function enable_macports () {
+    # Deactivate virtualenvs.
+    deactivate_any
+
     # Load MacPorts, unload Homebrew
     PATH=/opt/local/bin:/opt/local/sbin:$PATH
     PATH=${PATH/\/brew\/bin:/}
     PATH=${PATH/\/brew\/sbin:/}
     export PATH
+
+    update_prompt "macports"
 }
 
 function enable_homebrew () {
+    # Deactivate virtualenvs.
+    deactivate_any
+
     # Load Homebrew, unload MacPorts
     PATH=/brew/bin:/brew/sbin:$PATH
     PATH=${PATH/\/opt\/local\/bin:/}
     PATH=${PATH/\/opt\/local\/sbin:/}
     export PATH
+
+    update_prompt "homebrew"
 }
+
