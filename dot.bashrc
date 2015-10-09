@@ -52,16 +52,6 @@ export HISTCONTROL=ignoredups
 # when using lots of different terminals.
 shopt -s histappend
 
-############################# EC2 Configuration ##############################
-
-# If we have an Amazon EC2 configuration directory, load it up.
-if [ -e ~/.ec2 ];
-then
-	export EC2_HOME=/usr/local/ec2
-	export EC2_PRIVATE_KEY=`ls ~/.ec2/pk-*.pem`
-	export EC2_CERT=`ls ~/.ec2/cert-*.pem`
-fi
-
 ############################## Initialize Paths ##############################
 
 #export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
