@@ -57,7 +57,7 @@ shopt -s histappend
 #export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 # Base PATH.
-export PATH=/brew/bin:/brew/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+export PATH=/usr/bin:/usr/sbin:/bin:/sbin
 
 # If any of these dirs add them in this order.
 for d in ~/devel/bin ~/bin ~/local/bin ~/external/adk/sdk/tools ~/external/adk/sdk/platform-tools /Applications/Hugin/Hugin.app/Contents/MacOS;
@@ -72,8 +72,6 @@ case "$platform" in
     Darwin)
         export PATH=$PATH:/usr/X11/bin:$EC2_HOME/bin:/usr/local/mysql/bin
         export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
-        # this is for macports
-        #export PATH=$PATH:/opt/local/bin:/opt/local/sbin
         ;;
     Linux)
         ;;
@@ -197,3 +195,20 @@ case "$TERM" in
 		;;
 esac
 
+############################## Package Managers ###############################
+
+function enable_macports () {
+    # Load MacPorts, unload Homebrew
+    PATH=/opt/local/bin:/opt/local/sbin:$PATH
+    PATH=${PATH/\/brew\/bin:/}
+    PATH=${PATH/\/brew\/sbin:/}
+    export PATH
+}
+
+function enable_homebrew () {
+    # Load Homebrew, unload MacPorts
+    PATH=/brew/bin:/brew/sbin:$PATH
+    PATH=${PATH/\/opt\/local\/bin:/}
+    PATH=${PATH/\/opt\/local\/sbin:/}
+    export PATH
+}
