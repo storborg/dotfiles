@@ -60,7 +60,7 @@ shopt -s histappend
 export PATH=/usr/bin:/usr/sbin:/bin:/sbin
 
 # If any of these dirs add them in this order.
-for d in ~/devel/bin ~/bin ~/local/bin ~/external/adk/sdk/tools ~/external/adk/sdk/platform-tools /Applications/Hugin/Hugin.app/Contents/MacOS;
+for d in ~/devel/bin ~/bin ~/local/bin ~/external/adk/sdk/tools ~/external/adk/sdk/platform-tools
 do
     [ -e $d ] && export PATH=$PATH:$d
 done
