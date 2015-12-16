@@ -193,7 +193,7 @@ update_prompt "-"
 
 ############################## Package Managers ###############################
 
-function deactivate_any () {
+function deactivate_any_virtualenv () {
     type deactivate >/dev/null 2>&1
     if [ $? -eq 0 ]
     then
@@ -201,14 +201,24 @@ function deactivate_any () {
     fi
 }
 
-function enable_macports () {
-    # Deactivate virtualenvs.
-    deactivate_any
-
-    # Load MacPorts, unload Homebrew
-    PATH=/opt/local/bin:/opt/local/sbin:$PATH
+function remove_path_extras () {
     PATH=${PATH/\/brew\/bin:/}
     PATH=${PATH/\/brew\/sbin:/}
+    PATH=${PATH/\/opt\/local\/bin:/}
+    PATH=${PATH/\/opt\/local\/sbin:/}
+    PATH=${PATH/\/opt\/bleeding\/bin:/}
+    PATH=${PATH/\/opt\/bleeding\/sbin:/}
+    export PATH
+}
+
+function enable_macports () {
+    # Deactivate virtualenvs.
+    deactivate_any_virtualenv
+
+    # Load MacPorts, unload everything else
+    remove_path_extras
+
+    PATH=/opt/local/bin:/opt/local/sbin:$PATH
     export PATH
 
     update_prompt "macports"
@@ -216,15 +226,28 @@ function enable_macports () {
 
 function enable_homebrew () {
     # Deactivate virtualenvs.
-    deactivate_any
+    deactivate_any_virtualenv
 
-    # Load Homebrew, unload MacPorts
+    # Load Homebrew, unload everything else
+    remove_path_extras
+
     PATH=/brew/bin:/brew/sbin:$PATH
-    PATH=${PATH/\/opt\/local\/bin:/}
-    PATH=${PATH/\/opt\/local\/sbin:/}
     export PATH
 
     update_prompt "homebrew"
+}
+
+function enable_bleeding () {
+    # Deactivate virtualenvs.
+    deactivate_any_virtualenv
+
+    # Load bleeding path, unload everything else
+    remove_path_extras
+
+    PATH=/opt/bleeding/bin:/opt/bleeding/sbin:$PATH
+    export PATH
+
+    update_prompt "bleeding"
 }
 
 function uninstall_macports() {
