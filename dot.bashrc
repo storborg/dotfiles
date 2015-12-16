@@ -35,10 +35,9 @@ export ANSIBLE_NOCOWS=1
 
 # This will make clang not die on -mno-fused-madd args, which is necessary for
 # a bunch of python shit to install.
-export CFLAGS="-Qunused-arguments -I/usr/X11/include -I/usr/X11/include/freetype2"
-export CPPFLAGS="-Qunused-arguments"
-
-export LDFLAGS="-L/usr/X11/lib"
+#export CFLAGS="-Qunused-arguments -I/usr/X11/include -I/usr/X11/include/freetype2"
+#export CPPFLAGS="-Qunused-arguments"
+#export LDFLAGS="-L/usr/X11/lib"
 
 ############################# Bash History Stuff #############################
 
