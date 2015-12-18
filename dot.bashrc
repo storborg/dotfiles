@@ -208,7 +208,12 @@ function remove_path_extras () {
     PATH=${PATH/\/opt\/local\/sbin:/}
     PATH=${PATH/\/opt\/bleeding\/bin:/}
     PATH=${PATH/\/opt\/bleeding\/sbin:/}
+    PATH=${PATH/\/opt\/radiobrew\/bin:/}
+    PATH=${PATH/\/opt\/radiobrew\/sbin:/}
     export PATH
+
+    DYLD_LIBRARY_PATH=""
+    export DYLD_LIBRARY_PATH
 }
 
 function enable_macports () {
@@ -220,6 +225,9 @@ function enable_macports () {
 
     PATH=/opt/local/bin:/opt/local/sbin:$PATH
     export PATH
+
+    DYLD_LIBRARY_PATH=/opt/local/lib
+    export DYLD_LIBRARY_PATH
 
     update_prompt "macports"
 }
@@ -247,7 +255,23 @@ function enable_bleeding () {
     PATH=/opt/bleeding/bin:/opt/bleeding/sbin:$PATH
     export PATH
 
+    DYLD_LIBRARY_PATH=/opt/bleeding/lib
+    export DYLD_LIBRARY_PATH
+
     update_prompt "bleeding"
+}
+
+function enable_radiobrew () {
+    # Deactivate virtualenvs.
+    deactivate_any_virtualenv
+
+    # Load bleeding path, unload everything else
+    remove_path_extras
+
+    PATH=/opt/radiobrew/bin:/opt/radiobrew/sbin:$PATH
+    export PATH
+
+    update_prompt "radiobrew"
 }
 
 function uninstall_macports() {
