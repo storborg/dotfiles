@@ -77,10 +77,10 @@ case "$platform" in
 esac
 
 # For ARM toolchain...
-#if [ -e /usr/local/gcc-arm-none-eabi ];
-#then
-#    export PATH=/usr/local/gcc-arm-none-eabi/bin:$PATH
-#fi
+if [ -e /usr/local/gcc-arm-none-eabi ];
+then
+    export PATH=/usr/local/gcc-arm-none-eabi/bin:$PATH
+fi
 
 # For Arduino toolchain...
 #if [ -e /Applications/Arduino.app/Contents/Java/hardware/tools/avr/bin ];
