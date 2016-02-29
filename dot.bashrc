@@ -196,6 +196,7 @@ update_prompt "-"
 
 ############################## Package Managers ###############################
 
+# Set up dram.
 function deactivate_any_virtualenv () {
     type deactivate >/dev/null 2>&1
     if [ $? -eq 0 ]
@@ -204,90 +205,18 @@ function deactivate_any_virtualenv () {
     fi
 }
 
-function remove_path_extras () {
-    PATH=${PATH/\/brew\/bin:/}
-    PATH=${PATH/\/brew\/sbin:/}
-    PATH=${PATH/\/opt\/local\/bin:/}
-    PATH=${PATH/\/opt\/local\/sbin:/}
-    PATH=${PATH/\/opt\/bleeding\/bin:/}
-    PATH=${PATH/\/opt\/bleeding\/sbin:/}
-    PATH=${PATH/\/opt\/radiobrew\/bin:/}
-    PATH=${PATH/\/opt\/radiobrew\/sbin:/}
-    export PATH
+function dram_hook_preactivate () {
+    local dram_name=$1
+    local dram_prefix=$2
 
-    DYLD_LIBRARY_PATH=""
-    export DYLD_LIBRARY_PATH
-}
-
-function enable_macports () {
-    # Deactivate virtualenvs.
     deactivate_any_virtualenv
-
-    # Load MacPorts, unload everything else
-    remove_path_extras
-
-    PATH=/opt/local/bin:/opt/local/sbin:$PATH
-    export PATH
-
-    DYLD_LIBRARY_PATH=/opt/local/lib
-    export DYLD_LIBRARY_PATH
-
-    update_prompt "macports"
 }
 
-function enable_homebrew () {
-    # Deactivate virtualenvs.
-    deactivate_any_virtualenv
+function dram_hook_postactivate () {
+    local dram_name=$1
+    local dram_prefix=$2
 
-    # Load Homebrew, unload everything else
-    remove_path_extras
-
-    PATH=/brew/bin:/brew/sbin:$PATH
-    export PATH
-
-    update_prompt "homebrew"
+    update_prompt $dram_name
 }
 
-function enable_bleeding () {
-    # Deactivate virtualenvs.
-    deactivate_any_virtualenv
-
-    # Load bleeding path, unload everything else
-    remove_path_extras
-
-    PATH=/opt/bleeding/bin:/opt/bleeding/sbin:$PATH
-    export PATH
-
-    DYLD_LIBRARY_PATH=/opt/bleeding/lib
-    export DYLD_LIBRARY_PATH
-
-    update_prompt "bleeding"
-}
-
-function enable_radiobrew () {
-    # Deactivate virtualenvs.
-    deactivate_any_virtualenv
-
-    # Load bleeding path, unload everything else
-    remove_path_extras
-
-    PATH=/opt/radiobrew/bin:/opt/radiobrew/sbin:$PATH
-    export PATH
-
-    update_prompt "radiobrew"
-}
-
-function uninstall_macports() {
-    sudo /opt/local/bin/port -fp uninstall installed
-    sudo rm -rf \
-        /opt/local \
-        /Applications/DarwinPorts \
-        /Applications/MacPorts \
-        /Library/LaunchDaemons/org.macports.* \
-        /Library/Receipts/DarwinPorts*.pkg \
-        /Library/Receipts/MacPorts*.pkg \
-        /Library/StartupItems/DarwinPortsStartup \
-        /Library/Tcl/darwinports1.0 \
-        /Library/Tcl/macports1.0 \
-        ~/.macports
-}
+source ~/local/dram/dram.sh
