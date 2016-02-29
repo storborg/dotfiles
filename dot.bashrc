@@ -135,6 +135,9 @@ alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
 
 alias ocean='play -q -c 2 -n synth brownnoise band -n 1600 1500 tremolo .1 30'
 
+# Suggested style from https://matt.sh/howto-c
+alias cleanup-format='clang-format -style="{BasedOnStyle: llvm, IndentWidth: 4, AllowShortFunctionsOnASingleLine: None, KeepEmptyLinesAtTheStartOfBlocks: false}"'
+
 ############################## Prompt Settings ###############################
 
 # Update the terminal window title with user@hostname:dir even when
