@@ -129,6 +129,7 @@ alias mcflush='echo flush_all | nc 127.0.0.1 11211'
 alias mcstatus='echo stats | nc 127.0.0.1 11211'
 
 alias nt=nosetests
+alias lock='gnome-screensaver-command --lock'
 
 alias grep='GREP_COLOR="1;37;41" LANG=C grep --color=auto'
 
