@@ -66,7 +66,13 @@ if has("gui_running")
   set lines=50
   set columns=85
   set go-=T
-  set guifont=Bitstream\ Vera\ Sans\ Mono:h10
+  if has("gui_gtk2")
+    " For Ubuntu
+    set guifont=Ubuntu\ Mono 10
+  elseif has("gui_macvim")
+    " For Mac OS X
+    set guifont=Bitstream\ Vera\ Sans\ Mono:h10
+  endif
 endif
 
 call pathogen#infect()
