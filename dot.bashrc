@@ -116,7 +116,8 @@ export PYTHONSTARTUP=~/.pythonrc.py
 alias cvim=mvim
 alias gvim=mvim
 
-git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
+# This should be moved to a global "setup" script along with other git config.
+#git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
 
 alias gist='git status'
 alias f='finger'
