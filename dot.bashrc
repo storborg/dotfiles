@@ -98,9 +98,9 @@ then
     source /usr/local/bin/virtualenvwrapper.sh
 
     # Activate the py34 virtualenv, if it exists.
-    if [ -e $WORKON_HOME/default34 ];
+    if [ -e $WORKON_HOME/default35 ];
     then
-        workon default34
+        workon default35
     fi
 fi
 
