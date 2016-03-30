@@ -122,8 +122,6 @@ alias gvim=mvim
 alias gist='git status'
 alias f='finger'
 alias fuckoff='logout'
-alias logthefuckout='logout'
-alias term='xterm -fg white -bg black'
 alias ms='mysql -uroot'
 alias msdump='mysqldump -uroot'
 
