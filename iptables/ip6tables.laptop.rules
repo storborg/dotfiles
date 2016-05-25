@@ -1,0 +1,49 @@
+# Firewall rules for Ubuntu 16.04 laptop, IPv6 version.
+
+*filter 
+:INPUT DROP [1:242]
+:FORWARD DROP [0:0]
+:OUTPUT DROP [0:0]
+
+# Only accept packets which are part of a properly formed connection.
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+# Allow traffic for link-local addresses.
+-A INPUT -s fe80::/10 -j ACCEPT
+
+# Accept only ssh traffic on external interface.
+-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+
+# And anything over the loopback interface.
+-A INPUT -p all -i lo -j ACCEPT
+
+# Allow incoming and outgoing ICMPv6 traffic.
+-A INPUT -p icmpv6 -j ACCEPT
+-A OUTPUT -p icmpv6 -j ACCEPT
+
+# Any packets claiming to be from localhost but coming from WiFi
+# interface are evil.
+-A INPUT -p all -s ip6-localhost -i wlan0 -j DROP
+
+# Only allow outgoing packets which are part of a properly formed connection.
+-A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+# Restrict outbound traffic to legit stuff: ssh, dns, http, ntp, https.
+-A OUTPUT -p tcp -m tcp --dport 22 -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 53 -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 80 -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 123 -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 443 -j ACCEPT
+
+# XMPP/Jabber
+-A OUTPUT -p tcp -m tcp --dport 5222 -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 5223 -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 5269 -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 8010 -j ACCEPT
+
+# AIM
+-A OUTPUT -p tcp -m tcp --dport 5190 -j ACCEPT
+
+-A OUTPUT -p all -o lo -j ACCEPT
+
+COMMIT

@@ -1,0 +1,81 @@
+# Firewall rules for Ubuntu 16.04 laptop, IPv4 version.
+
+# No NAT routing here.
+*nat 
+:PREROUTING ACCEPT [127173:7033011]
+:POSTROUTING ACCEPT [31583:2332178]
+:OUTPUT ACCEPT [32021:2375633] 
+COMMIT
+
+# Block some sketchy shit like sF scans.
+*mangle 
+:PREROUTING ACCEPT [444:43563] 
+:INPUT ACCEPT [444:43563] :FORWARD ACCEPT [0:0] 
+:OUTPUT ACCEPT [402:144198] 
+:POSTROUTING ACCEPT [402:144198] 
+-A PREROUTING -p tcp -m tcp --tcp-flags FIN,SYN,RST,PSH,ACK,URG FIN,PSH,URG -j DROP 
+-A PREROUTING -p tcp -m tcp --tcp-flags FIN,SYN,RST,PSH,ACK,URG NONE -j DROP 
+-A PREROUTING -p tcp -m tcp --tcp-flags SYN,RST SYN,RST -j DROP
+-A PREROUTING -p tcp -m tcp --tcp-flags FIN,SYN FIN,SYN -j DROP
+COMMIT
+
+*filter 
+:INPUT DROP [1:242]
+:FORWARD DROP [0:0]
+:OUTPUT DROP [0:0]
+:icmp_packets - [0:0]
+
+# Only accept packets which are part of a properly formed connection.
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+# Accept ssh traffic only on external interfaces.
+-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+
+# And anything over the loopback interface.
+-A INPUT -p all -i lo -j ACCEPT
+
+# For incoming icmp packets, check the other chain.
+-A INPUT -p icmp -j icmp_packets
+
+# Any packets claiming to be from localhost but coming from WiFi
+# interface are evil.
+-A INPUT -p all -s localhost -i wlan0 -j DROP
+
+# Only allow outgoing packets which are part of a properly formed connection.
+-A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+# Restrict outbound traffic to legit stuff: ssh, dns, http, ntp, https.
+# Add more here as appropriate.
+-A OUTPUT -p tcp -m tcp --dport 22 -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 53 -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 80 -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 123 -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 443 -j ACCEPT
+
+# XMPP/Jabber
+-A OUTPUT -p tcp -m tcp --dport 5222 -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 5223 -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 5269 -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 8010 -j ACCEPT
+
+# AIM
+-A OUTPUT -p tcp -m tcp --dport 5190 -j ACCEPT
+
+-A OUTPUT -p all -o lo -j ACCEPT 
+
+# For outgoing icmp, check the other chain.
+-A OUTPUT -p icmp -j icmp_packets
+
+-A icmp_packets -p icmp -j ACCEPT
+
+# Block dangerous icmp traffic, including echo.
+-A icmp_packets -p icmp -m icmp --icmp-type 0 -j ACCEPT
+
+# Accept ICMP type 8 from loopback, private interface, or from trusted networks.
+-A icmp_packets -i lo   -p icmp -m icmp --icmp-type 8 -j ACCEPT
+
+-A icmp_packets -p icmp -m icmp --icmp-type 8 -j DROP
+-A icmp_packets -p icmp -m icmp --icmp-type 3 -j ACCEPT
+-A icmp_packets -p icmp -m icmp --icmp-type 11 -j ACCEPT
+
+COMMIT
