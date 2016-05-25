@@ -68,7 +68,7 @@ if has("gui_running")
   set go-=T
   if has("gui_gtk2")
     " For Ubuntu
-    set guifont=Ubuntu\ Mono 10
+    set guifont=Ubuntu\ Mono
   elseif has("gui_macvim")
     " For Mac OS X
     set guifont=Bitstream\ Vera\ Sans\ Mono:h10

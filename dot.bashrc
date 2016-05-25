@@ -33,20 +33,17 @@ set -o vi
 # Disable cowsay in ansible.
 export ANSIBLE_NOCOWS=1
 
-# This will make clang not die on -mno-fused-madd args, which is necessary for
-# a bunch of python shit to install.
-#export CFLAGS="-Qunused-arguments -I/usr/X11/include -I/usr/X11/include/freetype2"
-#export CPPFLAGS="-Qunused-arguments"
-#export LDFLAGS="-L/usr/X11/lib"
-
 ############################# Bash History Stuff #############################
 
 HISTFILESIZE=100000000
 HISTSIZE=100000
+
 # Don't add these commands to the history file.
 HISTIGNORE="cd:ls:[bf]g:clear:exit"
+
 # Don't put duplicate lines in the history.
 export HISTCONTROL=ignoredups
+
 # Append to history rather than overwriting it. This helps make things useful
 # when using lots of different terminals.
 shopt -s histappend
@@ -82,22 +79,13 @@ then
     export PATH=/usr/local/gcc-arm-none-eabi/bin:$PATH
 fi
 
-# For Arduino toolchain...
-#if [ -e /Applications/Arduino.app/Contents/Java/hardware/tools/avr/bin ];
-#then
-#    export PATH=/Applications/Arduino.app/Contents/Java/hardware/tools/avr/bin:$PATH
-#fi
-
-#export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/Users/scott/local/gnuradio/build/lib/pkgconfig
-#export PATH=$PATH:/Users/scott/local/gnuradio/build/bin
-
 # Set up virtualenvwrapper.
 if [ -e /usr/local/bin/virtualenvwrapper.sh ];
 then
     export WORKON_HOME=~/.virtualenvs
     source /usr/local/bin/virtualenvwrapper.sh
 
-    # Activate the py34 virtualenv, if it exists.
+    # Activate the default Python 3.5 virtualenv, if it exists.
     if [ -e $WORKON_HOME/default35 ];
     then
         workon default35
@@ -108,13 +96,6 @@ fi
 export PYTHONSTARTUP=~/.pythonrc.py
 
 ############################### Common Aliases ###############################
-
-# Alias for cocoa vim.
-#alias cvim='open -a Vim'
-
-# Override everything to macvim
-alias cvim=mvim
-alias gvim=mvim
 
 # This should be moved to a global "setup" script along with other git config.
 #git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -137,6 +118,19 @@ alias ocean='play -q -c 2 -n synth brownnoise band -n 1600 1500 tremolo .1 30'
 
 # Suggested style from https://matt.sh/howto-c
 alias cleanup-format='clang-format -style="{BasedOnStyle: llvm, IndentWidth: 4, AllowShortFunctionsOnASingleLine: None, KeepEmptyLinesAtTheStartOfBlocks: false}"'
+
+if [[ $platform == "Linux" ]]
+then
+    # Can't break this habit.
+    alias cvim=gvim
+
+    alias pbcopy='xclip -selection clipboard'
+    alias pbpaste='xclip -selection clipboard -o'
+else
+    # Override everything to Macvim.
+    alias cvim=mvim
+    alias gvim=mvim
+fi
 
 ############################## Prompt Settings ###############################
 
