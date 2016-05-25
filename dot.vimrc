@@ -160,14 +160,7 @@ if !exists(":DiffOrig")
 endif
 
 if has("gui_running")
-    " Settings for GPG integration.
-    " Don't use GPG agent, we don't have it by default on OS X.
-    let g:GPGUseAgent = 0
-    " If no recipients are set, encrypt to me.
-    let g:GPGDefaultRecipients = ["storborg@mit.edu"]
-    " Use vibrantink in GUI mode.
-    "colorscheme vibrantink 
-    colorscheme molokai
+  colorscheme molokai
 endif
 
 
