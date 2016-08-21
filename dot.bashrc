@@ -216,4 +216,4 @@ function dram_hook_postactivate () {
 
 # Configuration written by dram-install on 2016-08-21 05:51:55.252469 UTC
 export DRAM_ROOT=/dram
-source /home/scott/local/dram/dram/dram.sh
+source $HOME/local/dram/dram/dram.sh
