@@ -213,4 +213,7 @@ function dram_hook_postactivate () {
     update_prompt $dram_name
 }
 
-source ~/local/dram/dram.sh
+
+# Configuration written by dram-install on 2016-08-21 05:51:55.252469 UTC
+export DRAM_ROOT=/dram
+source /home/scott/local/dram/dram/dram.sh
