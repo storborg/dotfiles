@@ -75,6 +75,8 @@ endif
 call pathogen#infect()
 call pathogen#helptags()
 
+" If you're looking here because the airline fonts aren't showing up
+" correctly, remember you need to install the fonts-powerline apt package.
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
