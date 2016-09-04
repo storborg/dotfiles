@@ -1,5 +1,5 @@
 
-" Scott's .vimrc file, based on the example vim distribution example.
+" Scott's .vimrc file, based on the vim distribution example.
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -146,16 +146,6 @@ else
 
 endif " has("autocmd")
 
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
-endif
-
 if has("gui_running")
   colorscheme molokai
 endif
-
-
