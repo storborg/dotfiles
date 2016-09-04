@@ -159,5 +159,6 @@ else
 endif " has("autocmd")
 
 if has("gui_running")
-  colorscheme molokai
+  set background=dark
 endif
+colorscheme solarized

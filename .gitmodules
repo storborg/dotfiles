@@ -7,3 +7,6 @@
 [submodule "dot.vim/bundle/vim-airline-themes"]
 	path = dot.vim/bundle/vim-airline-themes
 	url = git@github.com:vim-airline/vim-airline-themes.git
+[submodule "dot.vim/bundle/vim-colors-solarized"]
+	path = dot.vim/bundle/vim-colors-solarized
+	url = git@github.com:altercation/vim-colors-solarized.git
