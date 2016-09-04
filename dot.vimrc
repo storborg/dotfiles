@@ -1,4 +1,3 @@
-
 " Scott's .vimrc file, based on the vim distribution example.
 
 " Use Vim settings, rather then Vi settings (much better!).
@@ -25,6 +24,9 @@ set number
 
 " don't blink the cursor
 set guicursor+=i:blinkwait0
+
+" this is necessary to make vim-airline load properly
+set laststatus=2
 
 " set some sensible tab settings (death to \t!)
 set tabstop=4
@@ -71,6 +73,14 @@ if has("gui_running")
 endif
 
 call pathogen#infect()
+call pathogen#helptags()
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_powerline_fonts = 1
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.linenr = ''
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
