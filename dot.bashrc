@@ -126,6 +126,8 @@ then
 
     alias pbcopy='xclip -selection clipboard'
     alias pbpaste='xclip -selection clipboard -o'
+
+    alias open='gnome-open'
 else
     # Override everything to Macvim.
     alias cvim=mvim
