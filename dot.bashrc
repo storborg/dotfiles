@@ -134,6 +134,12 @@ else
     alias gvim=mvim
 fi
 
+function ramdisk () {
+    size=$1
+    sudo mkdir -p /mnt/ramdisk
+    sudo mount -t tmpfs -o size=$size tmpfs /mnt/ramdisk
+}
+
 ############################## Prompt Settings ###############################
 
 # Update the terminal window title with user@hostname:dir even when
