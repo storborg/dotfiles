@@ -55,17 +55,14 @@ shopt -s histappend
 
 #export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
-# Base PATH.
-export PATH=/usr/bin:/usr/sbin:/bin:/sbin
+# Base PATH, with /usr/local first.
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 
-# If any of these dirs add them in this order.
-for d in ~/devel/bin ~/bin ~/local/bin ~/external/adk/sdk/tools ~/external/adk/sdk/platform-tools
+# If any of these dirs exist, add them ahead of /usr/local.
+for d in ~/.node_modules_global/bin ~/external/adk/sdk/tools ~/external/adk/sdk/platform-tools
 do
-    [ -e $d ] && export PATH=$PATH:$d
+    [ -e $d ] && export PATH=$d:$PATH
 done
-
-# Add /usr/local dirs to the beginning so they take precedence.
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 case "$platform" in
     Darwin)
