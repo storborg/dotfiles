@@ -140,6 +140,13 @@ function ramdisk () {
     sudo mount -t tmpfs -o size=$size tmpfs /mnt/ramdisk
 }
 
+function npm-do () {
+    orig_path=$PATH
+    PATH=$(npm bin):$PATH
+    eval $@
+    PATH=$orig_path
+}
+
 ############################## Prompt Settings ###############################
 
 # Update the terminal window title with user@hostname:dir even when
