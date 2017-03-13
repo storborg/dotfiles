@@ -142,7 +142,10 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
   autocmd BufNewFile,BufRead *.html,*.html call s:SelectHTML()
   "autocmd BufNewFile,BufRead *.html,*.htm setlocal ft=mako
-  
+
+  " The Mako module works ok for .vue files. Use it for now.
+  autocmd BufNewFile,BufRead *.vue setlocal ft=mako
+
   autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
   autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
   autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
