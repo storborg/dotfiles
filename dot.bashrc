@@ -53,7 +53,7 @@ shopt -s histappend
 
 ############################## Initialize Paths ##############################
 
-#export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 # Base PATH, with /usr/local first.
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
