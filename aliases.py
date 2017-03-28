@@ -12,9 +12,9 @@ for destfile in os.listdir(base):
         srcfile = ".%s" % destfile[4:]
         dest = os.path.join(base, destfile)
         src = os.path.join(home, srcfile)
-        print "linking %s -> %s" % (src, dest)
+        print("linking %s -> %s" % (src, dest))
         try:
             os.symlink(dest, src)
         except OSError:
-            print "  skipping! file already exists"
+            print("  skipping! file already exists")
 
