@@ -1,0 +1,5 @@
+addpath('~/opt/openEMS/share/openEMS/matlab');
+addpath('~/opt/openEMS/share/CSXCAD/matlab');
+
+addpath('~/opt/openEMS/share/hyp2mat/matlab'); % hyp2mat package
+addpath('~/opt/openEMS/share/CTB/matlab'); % circuit toolbox
