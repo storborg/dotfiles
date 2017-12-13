@@ -34,7 +34,7 @@ set -o vi
 export ANSIBLE_NOCOWS=1
 
 # Use lots of jobs in Make
-export MAKEFLAGS=-j8
+export MAKEFLAGS=-j36
 
 ############################# Bash History Stuff #############################
 
