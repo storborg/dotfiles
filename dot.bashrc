@@ -80,10 +80,10 @@ then
 fi
 
 # Set up virtualenvwrapper.
-if [ -e /usr/local/bin/virtualenvwrapper.sh ];
+if [ -e /usr/share/virtualenvwrapper/virtualenvwrapper.sh ];
 then
     export WORKON_HOME=~/.virtualenvs
-    source /usr/local/bin/virtualenvwrapper.sh
+    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
     # Activate the default Python 3.5 virtualenv, if it exists.
     if [ -e $WORKON_HOME/default35 ];
