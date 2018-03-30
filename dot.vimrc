@@ -25,9 +25,6 @@ set number
 " don't blink the cursor
 set guicursor+=i:blinkwait0
 
-" this is necessary to make vim-airline load properly
-set laststatus=2
-
 " set some sensible tab settings (death to \t!)
 set tabstop=4
 set shiftwidth=4
@@ -74,15 +71,6 @@ endif
 
 call pathogen#infect()
 call pathogen#helptags()
-
-" If you're looking here because the airline fonts aren't showing up
-" correctly, remember you need to install the fonts-powerline apt package.
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_powerline_fonts = 1
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.linenr = ''
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
