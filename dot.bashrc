@@ -160,7 +160,7 @@ complete -cf sudo
 function update_prompt () {
     ps1_extra=$1
     case "$TERM" in
-        xterm*|rxvt*)
+        xterm*|rxvt*|screen.xterm*)
             # This terminal supports colors.
             case "$platform" in
                 Darwin)
