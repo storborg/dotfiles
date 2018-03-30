@@ -25,7 +25,7 @@ set -o ignoreeof
 
 # Disable redirect overwrite, so if we 'cat foo > bar' it will only work if
 # bar doesn't already exist.
-set noclobber
+#set noclobber
 
 # Use vim keybindings in bash.
 set -o vi
