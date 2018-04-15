@@ -34,7 +34,8 @@ set -o vi
 export ANSIBLE_NOCOWS=1
 
 # Use lots of jobs in Make
-export MAKEFLAGS=-j36
+NCPUS=$(grep -c ^process /proc/cpuinfo)
+export MAKEFLAGS="-j$NCPUS"
 
 ############################# Bash History Stuff #############################
 
