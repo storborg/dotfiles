@@ -86,10 +86,10 @@ then
     export WORKON_HOME=~/.virtualenvs
     source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
-    # Activate the default Python 3.5 virtualenv, if it exists.
-    if [ -e $WORKON_HOME/default35 ];
+    # Activate the default Python 3.6 virtualenv, if it exists.
+    if [ -e $WORKON_HOME/default36 ];
     then
-        workon default35
+        workon default36
     fi
 fi
 
