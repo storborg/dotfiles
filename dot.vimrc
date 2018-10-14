@@ -25,6 +25,9 @@ set number
 " don't blink the cursor
 set guicursor+=i:blinkwait0
 
+" don't emit audio error bells, don't flash the screen
+set belloff=all
+
 " set some sensible tab settings (death to \t!)
 set tabstop=4
 set shiftwidth=4
