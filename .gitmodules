@@ -10,3 +10,6 @@
 [submodule "dot.vim/bundle/vim-colors-solarized"]
 	path = dot.vim/bundle/vim-colors-solarized
 	url = git@github.com:altercation/vim-colors-solarized.git
+[submodule "dot.vim/bundle/vim-vue"]
+	path = dot.vim/bundle/vim-vue
+	url = https://github.com/posva/vim-vue.git
