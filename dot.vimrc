@@ -135,7 +135,7 @@ if has("autocmd")
   "autocmd BufNewFile,BufRead *.html,*.htm setlocal ft=mako
 
   " The Mako module works ok for .vue files. Use it for now.
-  autocmd BufNewFile,BufRead *.vue setlocal ft=mako
+  " autocmd BufNewFile,BufRead *.vue setlocal ft=mako
 
   autocmd FileType cpp setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
