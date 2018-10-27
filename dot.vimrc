@@ -124,8 +124,8 @@ if has("autocmd")
   endfun
 
   " Do differently smart indenting in HTML (2 space tabs)
-  autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako setlocal tabstop=2 shiftwidth=2 softtabstop=2
- 
+  autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako,vue setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
   autocmd BufNewFile,BufRead host.conf setlocal ft=apache
   autocmd BufNewFile,BufRead *.rhtml setlocal ft=eruby
   autocmd BufNewFile,BufRead *.mako setlocal ft=mako
