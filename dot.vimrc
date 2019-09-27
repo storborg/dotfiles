@@ -139,6 +139,7 @@ if has("autocmd")
 
   autocmd BufEnter * :syntax sync fromstart
 
+  autocmd FileType cmake setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
   autocmd FileType cpp setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
   autocmd FileType verilog setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
   autocmd FileType systemverilog setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
