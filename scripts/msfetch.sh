@@ -6,18 +6,16 @@ then
     exit 65
 fi
 
-datestr=`date "+%m%d%Y-%H%M"`
+datestr=`date --iso-8601=minutes`
 fname="$2-$datestr.sql"
 
-# Execute mysqldump -uroot on the remote host.
-echo "Dumping DB $2 on remote $1 to $fname..."
-ssh $1 "mkdir -p ~/dumps && mysqldump -uroot $2 > ~/dumps/$fname"
-
-# scp file to local host.
-echo "Downloading..."
+# Ensure local dumps dir exists.
 mkdir -p ~/dumps
-rsync -avz --progress $1:~/dumps/$fname ~/dumps/
+
+# Execute mysqldump -uroot on the remote host.
+echo "Dumping DB $2 on remote $1 to $fname (local and remote)..."
+ssh -C $1 "mkdir -p ~/dumps && sudo mysqldump $2 | tee ~/dumps/$fname" > ~/dumps/$fname
 
 # Execute ms -uroot on the local host.
 echo "Loading DB $2 on local host..."
-mysql -uroot $2 < ~/dumps/$fname
+mysql $2 < ~/dumps/$fname
