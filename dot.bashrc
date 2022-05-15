@@ -87,7 +87,10 @@ then
     source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
     # Activate the default Python 3.x virtualenv, if it exists.
-    if [ -e $WORKON_HOME/default38 ];
+    if [ -e $WORKON_HOME/default3 ];
+    then
+        workon default3
+    elif [ -e $WORKON_HOME/default38 ];
     then
         workon default38
     elif [ -e $WORKON_HOME/default37 ];
