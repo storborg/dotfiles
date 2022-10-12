@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 if [ $# -ne 2 ]
 then
     echo "Usage: `basename $0` <host> <database>"
@@ -18,4 +20,4 @@ ssh -C $1 "mkdir -p ~/dumps && sudo mysqldump $2 | tee ~/dumps/$fname" > ~/dumps
 
 # Execute ms -uroot on the local host.
 echo "Loading DB $2 on local host..."
-mysql $2 < ~/dumps/$fname
+sudo mysql $2 < ~/dumps/$fname
