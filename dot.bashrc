@@ -90,15 +90,6 @@ then
     if [ -e $WORKON_HOME/default3 ];
     then
         workon default3
-    elif [ -e $WORKON_HOME/default38 ];
-    then
-        workon default38
-    elif [ -e $WORKON_HOME/default37 ];
-    then
-        workon default37
-    elif [ -e $WORKON_HOME/default36 ];
-    then
-        workon default36
     fi
 fi
 
