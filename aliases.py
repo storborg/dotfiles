@@ -2,13 +2,14 @@
 Set up aliases for dotfiles and folders.
 """
 
-import sys, os
+import os
+import sys
 
 base = os.path.dirname(sys.argv[0])
-home = os.environ['HOME']
+home = os.environ["HOME"]
 
 for destfile in os.listdir(base):
-    if destfile.startswith('dot.'):
+    if destfile.startswith("dot."):
         srcfile = ".%s" % destfile[4:]
         dest = os.path.join(base, destfile)
         src = os.path.join(home, srcfile)
@@ -17,4 +18,3 @@ for destfile in os.listdir(base):
             os.symlink(dest, src)
         except OSError:
             print("  skipping! file already exists")
-

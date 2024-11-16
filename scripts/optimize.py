@@ -6,7 +6,7 @@ import os
 
 tasks = {
     # Clean the Mail.app index
-    'vacuum mail index': 'sqlite3 ~/Library/Mail/Envelope\ Index vacuum;'
+    'vacuum mail index': r'sqlite3 ~/Library/Mail/Envelope\ Index vacuum;'
 }
 
 if __name__ == '__main__':

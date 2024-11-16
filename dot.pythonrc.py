@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
-import os, atexit
+import atexit
+import os
 
 # Try to import readline, and if it's available, do some useful completion
 # and history tracking.
@@ -9,10 +10,10 @@ try:
 except ImportError:
     pass
 else:
-    import rlcompleter
+
     readline.parse_and_bind("tab: complete")
 
-    histfile = os.path.join(os.environ['HOME'], ".python_history")
+    histfile = os.path.join(os.environ["HOME"], ".python_history")
     try:
         readline.read_history_file(histfile)
     except IOError:

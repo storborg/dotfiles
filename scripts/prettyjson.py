@@ -1,5 +1,5 @@
-import sys
 import pprint
+import sys
 
 try:
     import simplejson as json

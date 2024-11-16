@@ -15,7 +15,7 @@ def play_audio(filename):
 
 
 class Failure(Exception):
-    
+
     def __init__(self, msg):
         self.msg = msg
 

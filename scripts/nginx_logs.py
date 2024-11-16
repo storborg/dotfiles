@@ -20,32 +20,32 @@ from operator import itemgetter
 
 
 nginx_main_log_re = re.compile(
-    '(?P<remote_addr>\d+\.\d+\.\d+\.\d+)'
-    '\ -\ '
-    '(?P<remote_user>\S+)'
-    '\ '
-    '\[(?P<time_local>[^\]]+)\]'
-    '\ '
-    '(?P<status>\d{3})'
-    '\ '
+    r'(?P<remote_addr>\d+\.\d+\.\d+\.\d+)'
+    r'\ -\ '
+    r'(?P<remote_user>\S+)'
+    r'\ '
+    r'\[(?P<time_local>[^\]]+)\]'
+    r'\ '
+    r'(?P<status>\d{3})'
+    r'\ '
     '\"'
         '(?P<method>[A-Z]+)'
-        '\ '
-        '(?P<url>\S+)'
-        '\ '
-        '(?P<http_version>HTTP\/1\.(0|1))'
+        r'\ '
+        r'(?P<url>\S+)'
+        r'\ '
+        r'(?P<http_version>HTTP\/1\.(0|1))'
     '\"'
-    '\ '
-    '(?P<body_bytes_sent>\d+)'
-    '\ '
-    '\"(?P<referer>\S+)\"'
-    '\ '
+    r'\ '
+    r'(?P<body_bytes_sent>\d+)'
+    r'\ '
+    '\"(?P<referer>\\S+)\"'
+    r'\ '
     '\"(?P<user_agent>[^"]+)\"'
-    '\ '
+    r'\ '
     '\"(?P<http_x_forwarded_for>[^"]+)\"$')
 
 
-time_re = re.compile('(?P<main>.+)\ (?P<sign>[+-])(?P<offset_hours>\d{2})\d{2}$')
+time_re = re.compile(r'(?P<main>.+)\ (?P<sign>[+-])(?P<offset_hours>\d{2})\d{2}$')
 
 
 Request = namedtuple('Request',

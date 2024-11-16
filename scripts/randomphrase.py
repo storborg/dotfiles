@@ -1,11 +1,10 @@
 import random
 
-
 words = set()
 
-with open('/usr/share/dict/words') as f:
+with open("/usr/share/dict/words") as f:
     for line in f:
-        words.add(line.strip().lower().replace("'", ''))
+        words.add(line.strip().lower().replace("'", ""))
 
 
 words = list(words)
@@ -15,4 +14,4 @@ for n in range(5):
     phrase.append(random.choice(words))
 
 
-print(' '.join(phrase))
+print(" ".join(phrase))

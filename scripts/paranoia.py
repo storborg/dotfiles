@@ -29,7 +29,7 @@ def export_trust(level):
     if ret > 0:
         raise OSError("exporting %s trust failed, exit code %d" %
                       (level, ret))
-    
+
     return readPlist(tf.name)
 
 
