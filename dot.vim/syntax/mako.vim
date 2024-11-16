@@ -54,8 +54,8 @@ syn region makoAttributeValue containedin=makoTag,makoCustomTag contained start=
 syn region makoAttributeValue containedin=makoTag,makoCustomTag contained start=/'/ skip=/\\'/ end=/'/
 
 " Tags
-syn region makoTag matchgroup=makoDelim start="<%\(def\|call\|page\|include\|namespace\|inherit\)\>" end="/\?>"
-syn match makoDelim "</%\(def\|call\|namespace\)>"
+syn region makoTag matchgroup=makoDelim start="<%\(def\|block\|call\|page\|include\|namespace\|inherit\)\>" end="/\?>"
+syn match makoDelim "</%\(def\|block\|call\|namespace\)>"
 
 " Custom Tag Calls
 syn region makoCustomTag matchgroup=makoCustomDelim start="<%\([a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*\)\>" end="/\?>"
