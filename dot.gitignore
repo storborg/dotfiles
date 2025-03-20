@@ -11,3 +11,7 @@
 
 # Compiled python modules.
 *.pyc
+
+# Kicad Lock files
+*.kicad_pcb.lck
+*.kicad_sch.lck
