@@ -10,7 +10,8 @@ fi
 
 host="$1"
 dbname="$2"
-username="$dbname"
+# username="$dbname"
+username="deploy"
 datestr=`date --iso-8601=minutes`
 fname="$dbname-$datestr.sql"
 
