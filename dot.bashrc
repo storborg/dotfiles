@@ -60,7 +60,7 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/games
 
 # If any of these dirs exist, add them ahead of /usr/local.
-for d in ~/.node_modules_global/bin ~/external/adk/sdk/tools ~/external/adk/sdk/platform-tools /opt/apache-maven-3.6.0/bin ~/.cargo/bin /opt/blender
+for d in ~/.node_modules_global/bin ~/external/adk/sdk/tools ~/external/adk/sdk/platform-tools /opt/apache-maven-3.6.0/bin ~/.cargo/bin /opt/blender ~/opt/openEMS/bin
 do
     [ -e $d ] && export PATH=$d:$PATH
 done
@@ -233,4 +233,5 @@ function dram_hook_postactivate () {
 # Configuration written by dram-install on 2016-08-21 05:51:55.252469 UTC
 export DRAM_ROOT=/dram
 source $HOME/local/dram/dram/dram.sh
-source "$HOME/.cargo/env"
+# source "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
