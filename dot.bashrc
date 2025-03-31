@@ -65,6 +65,8 @@ do
     [ -e $d ] && export PATH=$d:$PATH
 done
 
+export PATH=~/local/dotfiles/bin:$PATH
+
 case "$platform" in
     Darwin)
         export PATH=$PATH:/usr/X11/bin
