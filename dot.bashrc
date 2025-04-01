@@ -9,6 +9,8 @@ export PAGER=less
 # So we'll use vim for that.
 export EDITOR=vim
 
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 # Helps GPG with shell invocations.
 export GPG_TTY=`tty`
 
