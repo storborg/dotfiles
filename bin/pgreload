@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -e
+
+if [ $# -ne 1 ]
+then
+    echo "Usage: `basename $0` <database>"
+    exit 65
+fi
+
+dbname="$1"
+
+fname=$(ls ~/dumps/$dbname-20*.sql | sort -r | head -n 1)
+echo "Most recent dump is $fname..."
+
+echo "Dropping existing DB on local host..."
+dropdb $dbname
+
+echo "Creating new DB..."
+createdb $dbname
+
+echo "Loading DB..."
+psql $dbname < $fname
+
+echo "Done"
