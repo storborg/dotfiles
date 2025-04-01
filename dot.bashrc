@@ -61,12 +61,6 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 # Base PATH, with /usr/local first.
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/games
 
-# If any of these dirs exist, add them ahead of /usr/local.
-for d in ~/.node_modules_global/bin ~/external/adk/sdk/tools ~/external/adk/sdk/platform-tools /opt/apache-maven-3.6.0/bin ~/.cargo/bin /opt/blender ~/opt/openEMS/bin
-do
-    [ -e $d ] && export PATH=$d:$PATH
-done
-
 export PATH=~/local/dotfiles/bin:$PATH
 
 # Run this file each time python starts up.
