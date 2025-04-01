@@ -106,51 +106,15 @@ export PYTHONSTARTUP=~/.pythonrc.py
 #git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
 
 alias gist='git status'
-alias f='finger'
-alias fuckoff='logout'
-alias ms='mysql -uroot'
-alias msdump='mysqldump -uroot'
-
-alias mcflush='echo flush_all | nc 127.0.0.1 11211'
-alias mcstatus='echo stats | nc 127.0.0.1 11211'
-
-alias nt=nosetests
-alias lock='gnome-screensaver-command --lock'
-
 alias grep='GREP_COLOR="mt=1;37;41" LANG=C grep --color=auto'
-
-alias ocean='play -q -c 2 -n synth brownnoise band -n 1600 1500 tremolo .1 30'
-
-# Suggested style from https://matt.sh/howto-c
-alias cleanup-format='clang-format -style="{BasedOnStyle: llvm, IndentWidth: 4, AllowShortFunctionsOnASingleLine: None, KeepEmptyLinesAtTheStartOfBlocks: false}"'
 
 if [[ $platform == "Linux" ]]
 then
-    # Can't break this habit.
-    alias cvim=gvim
-
     alias pbcopy='xclip -selection clipboard'
     alias pbpaste='xclip -selection clipboard -o'
 
     alias open='xdg-open'
-else
-    # Override everything to Macvim.
-    alias cvim=mvim
-    alias gvim=mvim
 fi
-
-function ramdisk () {
-    size=$1
-    sudo mkdir -p /mnt/ramdisk
-    sudo mount -t tmpfs -o size=$size tmpfs /mnt/ramdisk
-}
-
-function npm-do () {
-    orig_path=$PATH
-    PATH=$(npm bin):$PATH
-    eval $@
-    PATH=$orig_path
-}
 
 ############################## Prompt Settings ###############################
 
