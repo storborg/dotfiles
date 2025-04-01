@@ -69,19 +69,6 @@ done
 
 export PATH=~/local/dotfiles/bin:$PATH
 
-# Set up virtualenvwrapper.
-if [ -e /usr/share/virtualenvwrapper/virtualenvwrapper.sh ];
-then
-    export WORKON_HOME=~/.virtualenvs
-    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-
-    # Activate the default Python 3.x virtualenv, if it exists.
-    if [ -e $WORKON_HOME/default3 ];
-    then
-        workon default3
-    fi
-fi
-
 # Run this file each time python starts up.
 export PYTHONSTARTUP=~/.pythonrc.py
 
