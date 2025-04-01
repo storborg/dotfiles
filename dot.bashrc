@@ -69,21 +69,6 @@ done
 
 export PATH=~/local/dotfiles/bin:$PATH
 
-case "$platform" in
-    Darwin)
-        export PATH=$PATH:/usr/X11/bin
-        export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
-        ;;
-    Linux)
-        ;;
-esac
-
-# For ARM toolchain...
-if [ -e /usr/local/gcc-arm-none-eabi ];
-then
-    export PATH=/usr/local/gcc-arm-none-eabi/bin:$PATH
-fi
-
 # Set up virtualenvwrapper.
 if [ -e /usr/share/virtualenvwrapper/virtualenvwrapper.sh ];
 then
