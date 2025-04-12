@@ -59,7 +59,7 @@ shopt -s histappend
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 # Base PATH, with /usr/local first.
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/games
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/games:/snap/bin
 
 export PATH=~/local/dotfiles/bin:$PATH
 
@@ -169,3 +169,4 @@ export DRAM_ROOT=/dram
 source $HOME/local/dram/dram/dram.sh
 
 . "$HOME/.local/bin/env"
+. ~/.bashrc.local
