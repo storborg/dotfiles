@@ -63,9 +63,9 @@ if has("gui_running")
   set lines=50
   set columns=85
   set go-=T
-  if has("gui_gtk2")
+  if has("gui_gtk3")
     " For Ubuntu
-    set guifont=Ubuntu\ Mono\ 12
+    set guifont=Ubuntu\ Mono\ 11
   elseif has("gui_macvim")
     " For Mac OS X
     set guifont=Bitstream\ Vera\ Sans\ Mono:h10
