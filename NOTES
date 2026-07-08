@@ -1,0 +1,7 @@
+Disable Enhanced Tiling:
+- Settings -> Ubuntu Desktop -> Enhanced Tiling: change to off
+
+Swaps caps lock and escape:
+- apt install gnome-tweaks
+- gnome-tweaks
+- Keyboard -> Additional Layout Options -> Caps Lock behavior -> Swap caps lock and escape
