@@ -11,6 +11,7 @@
 
 # Compiled python modules.
 *.pyc
+__pycache__
 
 # Kicad Lock files
 *.kicad_pcb.lck
