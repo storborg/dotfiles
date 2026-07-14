@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+
+import glob
+import os
+import sys
+
+
+def main(argv=sys.argv):
+    new_base = argv[1]
+
+    project_suffix = ".kicad_pro"
+    project_matches = glob.glob("*" + project_suffix)
+
+    if len(project_matches) > 1:
+        print("more than one kicad project in this dir")
+        return 1
+    elif len(project_matches) == 0:
+        print("no kicad project in this dir")
+        return 1
+
+    project_match = project_matches[0]
+    orig_base = project_match[:-len(project_suffix)]
+
+    for orig_name in glob.glob("%s.*" % orig_base):
+        suffix = orig_name[len(orig_base):]
+        new_name = new_base + suffix
+        print("renaming %s -> %s" % (orig_name, new_name))
+        os.rename(orig_name, new_name)
+
+
+if __name__ == "__main__":
+    main()
